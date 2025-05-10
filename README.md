@@ -26,7 +26,11 @@ Repositori ini memiliki struktur standar proyek Flutter, yang mencakup:
 
 ## Screenshot emulator
 ![Tampilan Aplikasi](assets/Jadwalmobile.png)
-
+![Tampilan Aplikasi](assets/Homemobile.png)
+![Tampilan Aplikasi](assets/modegelaptablet.png)
+![Tampilan Aplikasi](assets/jadwaltablet.png)
+![Tampilan Aplikasi](assets/hometablet.png)
+![Tampilan Aplikasi](assets/profiltablet.png)
 
 
 
