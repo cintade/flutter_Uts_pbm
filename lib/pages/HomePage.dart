@@ -9,23 +9,32 @@ class _HomePageState extends State<HomePage> {
   List<Map<String, dynamic>> kegiatan = [
     {'nama': 'Rapat Karate', 'tanggal': 'Senin, 6 Mei', 'selesai': false},
     {'nama': 'Praktikum PBM', 'tanggal': 'Selasa, 7 Mei', 'selesai': false},
-    {'nama': 'Nugas MP', 'tanggal': 'Selasa, 8 Mei', 'selesai': false},
+    {'nama': 'Nugas MP', 'tanggal': 'Rabu, 8 Mei', 'selesai': false},
   ];
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Container(
       color:
-          Theme.of(context).brightness == Brightness.dark
+          theme.brightness == Brightness.dark
               ? Colors.grey[900]
-              : Colors.teal[50], // warna latar
+              : Colors.teal[50],
       padding: const EdgeInsets.all(8),
       child: ListView.builder(
         itemCount: kegiatan.length,
         itemBuilder: (context, index) {
+          final item = kegiatan[index];
+          final selesai = item['selesai'] as bool;
+
           return Card(
             color:
-                kegiatan[index]['selesai'] ? Colors.green[100] : Colors.white,
+                selesai
+                    ? (theme.brightness == Brightness.dark
+                        ? Colors.green[800]
+                        : Colors.green[100])
+                    : theme.cardColor,
             elevation: 2,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
@@ -34,17 +43,17 @@ class _HomePageState extends State<HomePage> {
             child: CheckboxListTile(
               activeColor: Colors.teal,
               title: Text(
-                kegiatan[index]['nama'],
-                style: TextStyle(
+                item['nama'],
+                style: theme.textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                   decoration:
-                      kegiatan[index]['selesai']
+                      selesai
                           ? TextDecoration.lineThrough
                           : TextDecoration.none,
                 ),
               ),
-              subtitle: Text(kegiatan[index]['tanggal']),
-              value: kegiatan[index]['selesai'],
+              subtitle: Text(item['tanggal'], style: theme.textTheme.bodySmall),
+              value: selesai,
               onChanged: (value) {
                 setState(() {
                   kegiatan[index]['selesai'] = value!;

@@ -26,7 +26,7 @@ flutter:
     - assets/profil.jpg
     - assets/Jadwalmobile.png
     - assets/Homemobile.png
-    - assets/Modegelap.png
-    - assets/akun.png
-    - assets/Jadwal.png
-    - assets/home.png
+    - assets/modegelaptablet.png
+    - assets/jadwaltablet.png
+    - assets/hometablet.png
+    - assets/profiltablet.png

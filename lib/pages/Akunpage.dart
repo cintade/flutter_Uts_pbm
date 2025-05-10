@@ -13,11 +13,11 @@ class _AkunPageState extends State<AkunPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDarkMode = theme.brightness == Brightness.dark;
+
     return Container(
-      color:
-          Theme.of(context).brightness == Brightness.dark
-              ? Colors.grey[900]
-              : Colors.blue[50],
+      color: isDarkMode ? Colors.grey[900] : Colors.blue[50],
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
@@ -27,15 +27,13 @@ class _AkunPageState extends State<AkunPage> {
               children: [
                 const CircleAvatar(
                   radius: 50,
-                  backgroundImage: NetworkImage('assets/profil.jpg'),
+                  backgroundImage: AssetImage('assets/profil.jpg'),
                 ),
                 const SizedBox(height: 10),
-                const Text(
+                Text(
                   "Cinta Delia Yunus",
-                  style: TextStyle(
-                    fontSize: 20,
+                  style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
                   ),
                 ),
               ],
@@ -46,23 +44,29 @@ class _AkunPageState extends State<AkunPage> {
 
           // INFO
           Card(
-            color: Colors.white,
+            color: theme.cardColor,
             elevation: 4,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
             child: Column(
-              children: const [
+              children: [
                 ListTile(
-                  leading: Icon(Icons.badge, color: Colors.blue),
-                  title: Text("NIM"),
-                  subtitle: Text("4522210143"),
+                  leading: const Icon(Icons.badge, color: Colors.blue),
+                  title: Text("NIM", style: theme.textTheme.bodyMedium),
+                  subtitle: Text(
+                    "4522210143",
+                    style: theme.textTheme.bodySmall,
+                  ),
                 ),
-                Divider(height: 1),
+                const Divider(height: 1),
                 ListTile(
-                  leading: Icon(Icons.email, color: Colors.blue),
-                  title: Text("Email"),
-                  subtitle: Text("4522210143@univpancasila.ac.id"),
+                  leading: const Icon(Icons.email, color: Colors.blue),
+                  title: Text("Email", style: theme.textTheme.bodyMedium),
+                  subtitle: Text(
+                    "4522210143@univpancasila.ac.id",
+                    style: theme.textTheme.bodySmall,
+                  ),
                 ),
               ],
             ),
@@ -72,7 +76,7 @@ class _AkunPageState extends State<AkunPage> {
 
           // TOGGLE MODE
           Card(
-            color: Colors.white,
+            color: theme.cardColor,
             elevation: 4,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
